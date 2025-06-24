@@ -36,12 +36,15 @@ The application is deployed to:
 
 **URL**: [`http://My-web-app-env.eba-3pivtbzg.us-east-1.elasticbeanstalk.com`](http://My-web-app-env.eba-3pivtbzg.us-east-1.elasticbeanstalk.com)
 
+![image](https://github.com/user-attachments/assets/d44ef87c-3fd3-40fa-8be2-9f94159704c7)
+
+
 ### 🔍 Available Endpoints
 
 | Endpoint         | Method | Description              | Example Usage |
 |------------------|--------|--------------------------|----------------|
-| `/`              | GET    | Root route – sanity check | `curl http://.../` |
-| `/health`        | GET    | Health check endpoint     | `curl http://.../health` |
+| `/`              | GET    | Root route – sanity check | `curl http://My-web-app-env.eba-3pivtbzg.us-east-1.elasticbeanstalk.com` |
+| `/health`        | GET    | Health check endpoint     | `curl http://My-web-app-env.eba-3pivtbzg.us-east-1.elasticbeanstalk.com/health` |
 
 ---
 
@@ -125,7 +128,7 @@ npm test
 ### 🔄 GitHub Actions Configuration
 
 - Location: `.github/workflows/main.yml`
-- Key Action: [`einaregilsson/beanstalk-deploy`](https://github.com/einaregilsson/beanstalk-deploy)
+
 
 Secrets used:
 - `AWS_ACCESS_KEY_ID`
@@ -145,4 +148,4 @@ Secrets used:
 
 ## 👨‍💻 Author
 
-**Cayanide** – DevOps Engineer in training, shipping code to the cloud like it’s 1999 🚢✨
+**Cayanide** 
