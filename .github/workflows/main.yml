@@ -1,0 +1,43 @@
+name: CI/CD Pipeline for Node.js Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+        env:
+          CI: true
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to AWS Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: my-web-app
+          environment_name: MyWebApp-env
+          version_label: ${{ github.sha }}
+          region: us-east-1
+          deployment_package: deploy.zip
+        env:
+          AWS_REGION: us-east-1
